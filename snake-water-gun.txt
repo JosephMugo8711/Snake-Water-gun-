@@ -1,0 +1,61 @@
+
+
+import random
+
+while True:
+    print("Welcome to Snake Water and Gun game.")
+    character = ["S", "W", "G"]
+    rounds = int(input("How many rounds you want to play?: "))
+    print("Here S for 'Snake' , W for 'Water' and G for 'Gun' ")
+    win = 0
+    lose = 0
+
+    for i in range(1, rounds + 1):
+        print(f"Round {i}")
+        user = input("What do you want to choose? Type 'S', 'W' and 'G': ").upper()
+        computer = random.choice(character)
+        should_continue = True
+        while should_continue:
+            if user == computer:
+                computer = random.choice(character)
+            elif user not in character:
+                print("Choose the correct option!")
+                user = input("What do you want to choose? Type 'S', 'W' and 'G': ").upper()
+            else:
+                should_continue = False
+        print(f"Computer chooses {computer}")
+        if user == "S" and computer == "W":
+            print(f"You won the round {i}")
+            win += 1
+            print(f"Win = {win} and lose = {lose}")
+        elif user == "W" and computer == "G":
+            print(f"You won the round {i}")
+            win += 1
+            print(f"Win = {win} and lose = {lose}")
+        elif user == "G" and computer == "S":
+            print(f"You won the round {i}")
+            win += 1
+            print(f"Win = {win} and lose = {lose}")
+        else:
+            print(f"You lose the round {i}, Computer won.")
+            lose += 1
+            print(f"Win = {win} and lose = {lose}")
+
+    print(f"You won {win} round and computer won {lose} round in {rounds} rounds.")
+    if win > lose:
+        print(f"Congratulations, You won the game.")
+    elif win == lose:
+        print("Game draw, you both won same numbers of rounds.")
+    else:
+        print(f"Sorry you lose the game, Better luck next time.")
+
+    while True:
+        play_again = input("Do you want to play again?Type 'yes' or 'no': ").lower()
+        if play_again in ("yes", "no"):
+            break
+        print("invalid input.")
+    if play_again == "yes":
+        continue
+    else:
+        print("Goodbye! Have a good day.")
+        break
